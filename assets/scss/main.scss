@@ -1,6 +1,7 @@
 @use 'variables';
 @use 'header/header';
 @use 'content';
+@use 'dialog';
 
 body {
     height: 100vh;

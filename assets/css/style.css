@@ -61,6 +61,7 @@ header h1 {
 }
 header em {
   font-size: 3rem;
+  cursor: pointer;
 }
 
 main {
@@ -99,6 +100,41 @@ main #cards div.card p.date {
   color: gray;
   position: absolute;
   bottom: 3px;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+}
+dialog form label {
+  margin-bottom: 1rem;
+}
+dialog form label input, dialog form label textarea {
+  font-size: 2rem;
+  width: 100%;
+}
+dialog form #choices {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+dialog form #choices input {
+  width: 60%;
+  font-size: 2rem;
+}
+dialog form #choices em {
+  font-size: 2.5rem;
+  width: fit-content;
+}
+dialog form #choices input, dialog form #choices em {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 1rem;
+}
+dialog form #choices input:hover, dialog form #choices em:hover {
+  text-decoration: underline;
 }
 
 body {

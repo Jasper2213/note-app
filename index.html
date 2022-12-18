@@ -12,8 +12,25 @@
     <script src="assets/js/script.js"></script>
 </head>
 <body>
+    <dialog id="new-note">
+        <form>
+            <label for="title">
+                <input type="text" id="title" placeholder="title">
+            </label>
+
+            <label for="text">
+                <textarea name="note" id="text" rows="7"></textarea>
+            </label>
+
+            <div id="choices">
+                <em class="fa-solid fa-xmark" id="cancel"></em>
+                <input type="submit" value="Create note" id="create">
+            </div>
+        </form>
+    </dialog>
+
     <header>
-        <em class="fa-solid fa-plus"></em>
+        <em class="fa-solid fa-plus" id="new"></em>
 
         <h1>Notes app</h1>
 

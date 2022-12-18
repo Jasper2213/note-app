@@ -1,0 +1,43 @@
+dialog {
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin-bottom: 1rem;
+
+            input, textarea {
+                font-size: 2rem;
+                width: 100%;
+            }
+        }
+
+        #choices {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            input {
+                width: 60%;
+                font-size: 2rem;
+            }
+
+            em {
+                font-size: 2.5rem;
+                width: fit-content;
+            }
+
+            input, em {
+                cursor: pointer;
+                background-color: transparent;
+                border: 2px solid black;
+                padding: 1rem;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
