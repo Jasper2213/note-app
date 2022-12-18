@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin: 0 8px 7px 0;
   padding: 7px 9px 0 9px;
-  border: 3px solid white;
+  border: 3px solid black;
   border-radius: 25px;
   transition: all 200ms ease;
   cursor: text;
@@ -18,7 +18,7 @@
   height: 20px;
   right: -5px;
   top: 21px;
-  background: white;
+  background: black;
   border-radius: 3px;
   transform: rotate(-45deg);
   transition: all 200ms ease;
@@ -59,20 +59,25 @@ header {
 header h1 {
   font-size: 4rem;
 }
+header em {
+  font-size: 3rem;
+}
 
 main {
   padding: 2rem;
 }
 main #cards {
   display: flex;
-  flex: 1;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: baseline;
   align-content: flex-start;
   gap: 3rem;
+  width: 95%;
+  margin: auto;
 }
 main #cards div.card {
-  width: 22%;
+  width: 20%;
   padding: 0.5rem;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
