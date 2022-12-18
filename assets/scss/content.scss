@@ -1,0 +1,44 @@
+@use 'variables';
+
+main {
+    padding: 2rem;
+
+    #cards {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        align-items: baseline;
+        align-content: flex-start;
+        gap: 3rem;
+
+        div.card {
+            width: 22%;
+            padding: 0.5rem;
+            background-color: variables.$card-color;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid black;
+
+            position: relative;
+
+            h2 {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+
+                &.date {
+                    font-size: 1rem;
+                    margin-bottom: 0;
+                    color: variables.$date-color;
+
+                    position: absolute;
+                    bottom: 3px;
+                }
+            }
+        }
+    }
+}

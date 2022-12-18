@@ -1,0 +1,15 @@
+@use 'variables';
+
+header {
+    background-color: variables.$header-color;
+    height: 7%;
+    padding: 1rem;
+    border-bottom: black 2px solid;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 15px 5px;
+
+    h1 {
+        font-size: 4rem;
+    }
+}

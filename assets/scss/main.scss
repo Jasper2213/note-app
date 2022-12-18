@@ -1,0 +1,10 @@
+@use 'variables';
+@use 'header';
+@use 'content';
+
+body {
+    height: 100vh;
+    font-family: Mukta, sans-serif;
+    background-color: variables.$body-color;
+    font-size: 1rem;
+}
