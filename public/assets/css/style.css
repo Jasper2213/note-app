@@ -137,6 +137,28 @@ dialog form #choices input:hover, dialog form #choices em:hover {
   text-decoration: underline;
 }
 
+#options {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  font-size: 2rem;
+}
+#options #ordering {
+  display: flex;
+  flex-direction: row;
+}
+#options #ordering p {
+  margin-right: 0.5rem;
+}
+#options #ordering select {
+  font-size: 1rem;
+}
+#options #favourites input {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
 body {
   height: 100vh;
   font-family: Mukta, sans-serif;

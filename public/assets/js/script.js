@@ -17,7 +17,7 @@ async function init() {
 
     document.querySelector("dialog #cancel").addEventListener("click", closeDialogWithoutClearingText);
 
-    await addNotes();
+    // await addNotes();
 }
 
 function createNewNote() {

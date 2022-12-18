@@ -1,0 +1,27 @@
+#options {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    font-size: 2rem;
+
+    #ordering {
+        display: flex;
+        flex-direction: row;
+
+        p {
+            margin-right: 0.5rem;
+        }
+
+        select {
+            font-size: 1rem;
+        }
+    }
+
+    #favourites {
+        input {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    }
+}

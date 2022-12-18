@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note app</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Mukta' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/238f3c8a83.js" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js" type="module"></script>
+</head>
+<body>
+    <dialog id="new-note">
+        <form>
+            <label for="title">
+                <input type="text" id="title" placeholder="title">
+            </label>
+
+            <label for="text">
+                <textarea name="note" id="text" rows="7"></textarea>
+            </label>
+
+            <div id="choices">
+                <em class="fa-solid fa-xmark" id="cancel"></em>
+                <input type="submit" value="Create note" id="create">
+            </div>
+        </form>
+    </dialog>
+
+    <header>
+        <em class="fa-solid fa-plus" id="new"></em>
+
+        <h1>Notes app</h1>
+
+        <form action="" method="get">
+            <label class="search" for="input_search">
+                <input id="input_search" type="text"/>
+            </label>
+        </form>
+    </header>
+
+    <main>
+        <div id="options">
+            <form id="ordering">
+                <p>Order by:</p>
+                <label for="orderBy">
+                    <select name="orderBy" id="orderBy">
+                        <option value="date-ascending">Newest</option>
+                        <option value="date-descending">Oldest</option>
+                        <option value="title-ascending">Title ascending</option>
+                        <option value="title-descending">Title descending</option>
+                    </select>
+                </label>
+            </form>
+
+            <form id="favourites">
+                <label for="showFavourites">Show favourite notes only?</label>
+                <input type="checkbox" id="showFavourites" />
+            </form>
+
+            <form id="viewSetting">
+                <!-- TODO: Use icons -->
+                <p>Card view/</p>
+                <p>List view</p>
+            </form>
+        </div>
+
+        <div id="cards">
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
