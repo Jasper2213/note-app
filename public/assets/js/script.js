@@ -1,5 +1,12 @@
 "use strict";
 
+// TODO:
+//  Change order
+//  add favourites and filter on favourites (add boolean favourite to json object, and set/filter on that?)
+//  edit notes
+//  implement database system with docker
+//  write readme file with instructions to run locally
+
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
