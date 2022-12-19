@@ -1,5 +1,14 @@
 "use strict";
 
+/* TODO's:
+      [] Add event listeners to new forms
+      [] Set up express server
+      [] Add sorting possibilities to notes when retrieving them (Add new endpoint for this?)
+      [] Add layout for list view
+      [] Add possibility to favourite a note
+      [] Add more mock-data
+*/
+
 const BASEURL = "http://localhost:3000";
 
 document.addEventListener("DOMContentLoaded", init);
