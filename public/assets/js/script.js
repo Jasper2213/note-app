@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", init);
 async function init() {
     document.querySelector("#input_search").addEventListener("focus", () => {
         document.querySelector("label.search").classList.add("active");
+        document.querySelector("label.search input").setAttribute("placeholder", "Search title...");
     });
     document.querySelector("#input_search").addEventListener("blur", () => {
         document.querySelector("label.search").classList.remove("active");
+        document.querySelector("label.search input").removeAttribute("placeholder");
     });
     document.querySelector("header form").addEventListener("submit", searchNote);
 
