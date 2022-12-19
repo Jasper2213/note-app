@@ -24,6 +24,8 @@ function create(data) {
         content: content,
         date: date
     });
+
+    return notes;
 }
 
 function getNoteByTitle(title) {

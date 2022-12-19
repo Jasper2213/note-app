@@ -33,8 +33,7 @@ app.get('/notes/:query', (req, res, next) => {
 });
 
 app.post('/note', (req, res, next) => {
-    Note.create(req.body);
-    res.status(SUCCESSFUL_ADD).send();
+    res.send(Note.create(req.body));
 });
 
 app.get('/notes/favourites', (req, res, next) => {

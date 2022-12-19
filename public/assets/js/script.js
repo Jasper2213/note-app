@@ -101,7 +101,8 @@ function addNote(e) {
     };
 
     post('/note', body)
-        .then(() => showNotes())
+        .then(res => res.json())
+        .then(data => showNotes(data))
         .catch(err => console.error(err));
 
     $title.value = "";
