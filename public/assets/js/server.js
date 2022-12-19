@@ -3,6 +3,7 @@ import cors from 'cors';
 import basicAuth from 'express-basic-auth';
 
 import { Note } from './logic/data/mock/mock-repository.js';
+import {CustomError} from "./logic/exceptions/errorhandling.js";
 
 const users = { admin: 1234 };
 
@@ -21,15 +22,11 @@ app.listen(PORT, () => {
 });
 
 app.get('/notes', (req, res, next) => {
-    Note.getAllNotes()
-        .then(results => res.json(results))
-        .catch(err => next(err));
+    res.json(Note.getAllNotes());
 });
 
 app.get('/notes/favourites', (req, res, next) => {
-    Note.getAllFavourites()
-        .then(results => res.json(results))
-        .catch(err => next(err));
+    res.json(Note.getAllFavourites());
 });
 
 app.use((err, req, res, next) => {
