@@ -47,6 +47,8 @@ async function searchNote(e) {
     await get(`/notes/${query}`)
         .then(res => res.json())
         .then(data => showNotes(data));
+
+    $searchbar.value = "";
 }
 
 async function showNotes(notes) {
