@@ -17,20 +17,34 @@ async function init() {
     document.querySelector("#new-note form").addEventListener("submit", addNote);
     document.querySelector("dialog #cancel").addEventListener("click", closeDialog);
 
-    document.querySelector("#listView").addEventListener("click", showNotesInListView);
-    document.querySelector("#cardView").addEventListener("click", showNotesInCardView);
+    document.querySelector("#listView").addEventListener("click", switchToListView);
+    document.querySelector("#cardView").addEventListener("click", switchToCardView);
 
     const notes = await get('/notes').then(res => res.json());
     await showNotes(notes);
 }
 
-function searchNote(e) {
+async function switchToListView() {
+    document.querySelector("#listView").classList.add("selected");
+    document.querySelector("#cardView").classList.remove("selected");
+
+    await showNotes(await get('/notes').then(res => res.json()));
+}
+
+async function switchToCardView() {
+    document.querySelector("#cardView").classList.add("selected");
+    document.querySelector("#listView").classList.remove("selected");
+
+    await showNotes(await get('/notes').then(res => res.json()));
+}
+
+async function searchNote(e) {
     e.preventDefault();
 
     const $searchbar = document.querySelector("#input_search");
     const query = $searchbar.value;
 
-    get(`/notes/${query}`)
+    await get(`/notes/${query}`)
         .then(res => res.json())
         .then(data => showNotes(data));
 }
@@ -43,8 +57,7 @@ async function showNotes(notes) {
 }
 
 async function showNotesInListView(notes) {
-    document.querySelector("#listView").classList.add("selected");
-    document.querySelector("#cardView").classList.remove("selected");
+
 
     const $notesDiv = document.querySelector("#cards");
 
@@ -56,8 +69,7 @@ async function showNotesInListView(notes) {
 }
 
 async function showNotesInCardView(notes) {
-    document.querySelector("#cardView").classList.add("selected");
-    document.querySelector("#listView").classList.remove("selected");
+
 
     const $notesDiv = document.querySelector("#cards");
 
