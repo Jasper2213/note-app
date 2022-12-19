@@ -5,9 +5,8 @@
       [] Add sorting possibilities to notes when retrieving them (Add new endpoint for this?)
       [] Add possibility to favourite a note
       [] Add more mock-data
+      [] Add possibility to edit a note
 */
-
-const BASEURL = "http://localhost:3000";
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -21,13 +20,20 @@ async function init() {
     });
 
     document.querySelector("#new").addEventListener("click", createNewNote);
-
-    document.querySelector("dialog #cancel").addEventListener("click", closeDialogWithoutClearingText);
+    document.querySelector("#new-note form").addEventListener("submit", addNote);
+    document.querySelector("dialog #cancel").addEventListener("click", closeDialog);
 
     document.querySelector("#listView").addEventListener("click", showNotesInListView);
     document.querySelector("#cardView").addEventListener("click", showNotesInCardView);
 
-    await addNotesInCardView();
+    await showNotes();
+}
+
+async function showNotes() {
+    if (document.querySelector("#listView").classList.contains("selected"))
+        await showNotesInListView();
+
+    else await showNotesInCardView();
 }
 
 async function showNotesInListView() {
@@ -61,7 +67,33 @@ function createNewNote() {
     $dialog.showModal();
 }
 
-function closeDialogWithoutClearingText() {
+function addNote(e) {
+    e.preventDefault();
+
+    const $title = document.querySelector("input#title");
+    const $content = document.querySelector("textarea#text");
+
+    const noteTitle = $title.value;
+    const noteContent = $content.value;
+
+
+    const body = {
+        title: noteTitle,
+        content: noteContent,
+        date: new Date()
+    };
+
+    post('/note', body)
+        .then(() => showNotes())
+        .catch(err => console.error(err));
+
+    $title.value = "";
+    $content.value = "";
+
+    closeDialog();
+}
+
+function closeDialog() {
     const $dialog = document.querySelector("dialog#new-note");
     $dialog.close();
 }
@@ -73,7 +105,7 @@ async function addNotesInListView() {
 
     const $notesListDiv = document.querySelector("#notesList");
 
-    const notes = await fetch(`${BASEURL}/notes`).then(res => res.json());
+    const notes = await get(`/notes`).then(res => res.json());
     notes.forEach(note => {
         const html = `<div class="note">
                          <h2>${note.title}</h2>
@@ -109,7 +141,7 @@ function showNote(e) {
 async function addNotesInCardView() {
     const $notesDiv = document.querySelector("#cards");
 
-    const notes = await fetch(`${BASEURL}/notes`).then(res => res.json());
+    const notes = await get(`/notes`).then(res => res.json());
     notes.forEach(note => {
         const card = `<div class="card">
                           <h2>${note.title}</h2>

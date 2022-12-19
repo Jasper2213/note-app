@@ -1,8 +1,6 @@
 
 Q
 !public/assets/scss/variables.scss,0\b\0be6745aff2a3ea4e8292fbd9ab338b0a466f7cd
-K
-public/assets/css/reset.css,7\c\7c89e5ff86c1a2aeac1012b533bc9c20222e6e86
 U
 %public/assets/scss/header/header.scss,1\2\1247dcf3b7ad69b4437c44077ba3a1b15dd67e9e
 b

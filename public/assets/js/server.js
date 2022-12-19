@@ -10,6 +10,7 @@ const users = { admin: 1234 };
 const PORT = 3000;
 const SERVER_ERROR_STATUSCODE = 500;
 const SERVER_ERROR_MESSAGE = "Server error";
+const SUCCESSFUL_ADD = 201;
 
 const app = express();
 
@@ -23,6 +24,11 @@ app.listen(PORT, () => {
 
 app.get('/notes', (req, res, next) => {
     res.json(Note.getAllNotes());
+});
+
+app.post('/note', (req, res, next) => {
+    Note.create(req.body);
+    res.status(SUCCESSFUL_ADD).send();
 });
 
 app.get('/notes/favourites', (req, res, next) => {
