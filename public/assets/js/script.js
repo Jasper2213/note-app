@@ -14,10 +14,10 @@ async function init() {
     document.querySelector("#input_search").addEventListener("focus", () => {
         document.querySelector("label.search").classList.add("active");
     });
-
     document.querySelector("#input_search").addEventListener("blur", () => {
         document.querySelector("label.search").classList.remove("active");
     });
+    document.querySelector("header form").addEventListener("submit", searchNote);
 
     document.querySelector("#new").addEventListener("click", createNewNote);
     document.querySelector("#new-note form").addEventListener("submit", addNote);
@@ -26,17 +26,29 @@ async function init() {
     document.querySelector("#listView").addEventListener("click", showNotesInListView);
     document.querySelector("#cardView").addEventListener("click", showNotesInCardView);
 
-    await showNotes();
+    const notes = await get('/notes').then(res => res.json());
+    await showNotes(notes);
 }
 
-async function showNotes() {
+function searchNote(e) {
+    e.preventDefault();
+
+    const $searchbar = document.querySelector("#input_search");
+    const query = $searchbar.value;
+
+    get(`/notes/${query}`)
+        .then(res => res.json())
+        .then(data => showNotes(data));
+}
+
+async function showNotes(notes) {
     if (document.querySelector("#listView").classList.contains("selected"))
-        await showNotesInListView();
+        await showNotesInListView(notes);
 
-    else await showNotesInCardView();
+    else await showNotesInCardView(notes);
 }
 
-async function showNotesInListView() {
+async function showNotesInListView(notes) {
     document.querySelector("#listView").classList.add("selected");
     document.querySelector("#cardView").classList.remove("selected");
 
@@ -46,10 +58,10 @@ async function showNotesInListView() {
     $notesDiv.classList.add("listView");
     $notesDiv.innerHTML = "";
 
-    await addNotesInListView();
+    await addNotesInListView(notes);
 }
 
-async function showNotesInCardView() {
+async function showNotesInCardView(notes) {
     document.querySelector("#cardView").classList.add("selected");
     document.querySelector("#listView").classList.remove("selected");
 
@@ -59,7 +71,7 @@ async function showNotesInCardView() {
     $notesDiv.classList.remove("listView");
     $notesDiv.innerHTML = "";
 
-    await addNotesInCardView();
+    await addNotesInCardView(notes);
 }
 
 function createNewNote() {
@@ -75,7 +87,6 @@ function addNote(e) {
 
     const noteTitle = $title.value;
     const noteContent = $content.value;
-
 
     const body = {
         title: noteTitle,
@@ -98,14 +109,13 @@ function closeDialog() {
     $dialog.close();
 }
 
-async function addNotesInListView() {
+async function addNotesInListView(notes) {
     const $notesDiv = document.querySelector("#cards");
     $notesDiv.innerHTML =  `<div id=notesList></div>
                             <div id=fullNote></div>`;
 
     const $notesListDiv = document.querySelector("#notesList");
 
-    const notes = await get(`/notes`).then(res => res.json());
     notes.forEach(note => {
         const html = `<div class="note">
                          <h2>${note.title}</h2>
@@ -138,10 +148,9 @@ function showNote(e) {
                               <p class="date">${date}</p>`;
 }
 
-async function addNotesInCardView() {
+async function addNotesInCardView(notes) {
     const $notesDiv = document.querySelector("#cards");
 
-    const notes = await get(`/notes`).then(res => res.json());
     notes.forEach(note => {
         const card = `<div class="card">
                           <h2>${note.title}</h2>

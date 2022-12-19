@@ -9,8 +9,6 @@ function getAllFavourites() {
     return favourites;
 }
 
-export { getAllNotes, getAllFavourites, create }
-
 function create(data) {
     if (data === undefined)
         throw new BodyParsingError("Body cannot be empty");
@@ -27,3 +25,9 @@ function create(data) {
         date: date
     });
 }
+
+function getNoteByTitle(title) {
+    return notes.filter(note => note.title.toLowerCase().includes(title.toLowerCase()));
+}
+
+export { getAllNotes, getAllFavourites, create, getNoteByTitle }

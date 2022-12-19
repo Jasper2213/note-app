@@ -8,7 +8,7 @@ import {CustomError} from "./logic/exceptions/errorhandling.js";
 const users = { admin: 1234 };
 
 const PORT = 3000;
-const SERVER_ERROR_STATUSCODE = 500;
+const SERVER_ERROR_STATUS_CODE = 500;
 const SERVER_ERROR_MESSAGE = "Server error";
 const SUCCESSFUL_ADD = 201;
 
@@ -26,6 +26,12 @@ app.get('/notes', (req, res, next) => {
     res.json(Note.getAllNotes());
 });
 
+app.get('/notes/:query', (req, res, next) => {
+    const query = req.params.query;
+
+    res.json(Note.getNoteByTitle(query));
+});
+
 app.post('/note', (req, res, next) => {
     Note.create(req.body);
     res.status(SUCCESSFUL_ADD).send();
@@ -40,6 +46,6 @@ app.use((err, req, res, next) => {
         res.status(err.statusCode).send(err.message);
     else {
         console.error(err);
-        res.status(SERVER_ERROR_STATUSCODE).send(SERVER_ERROR_MESSAGE);
+        res.status(SERVER_ERROR_STATUS_CODE).send(SERVER_ERROR_MESSAGE);
     }
 });
