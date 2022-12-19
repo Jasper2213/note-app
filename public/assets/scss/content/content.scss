@@ -4,41 +4,93 @@ main {
     padding: 2rem;
 
     #cards {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        align-items: baseline;
-        align-content: flex-start;
-        gap: 3rem;
-        width: 95%;
-        margin: auto;
+        &.cardView {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: baseline;
+            align-content: flex-start;
+            gap: 3rem;
+            width: 95%;
+            margin: auto;
 
-        div.card {
-            width: 20%;
-            padding: 0.5rem;
-            background-color: variables.$card-color;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            div.card {
+                width: 20%;
+                padding: 0.5rem;
+                background-color: variables.$card-color;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border: 1px solid black;
+
+                position: relative;
+
+                h2 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                }
+
+                p {
+                    font-size: 1.3rem;
+                    margin-bottom: 1.5rem;
+
+                    &.date {
+                        font-size: 1rem;
+                        margin-bottom: 0;
+                        color: variables.$date-color;
+
+                        position: absolute;
+                        bottom: 3px;
+                    }
+                }
+            }
+        }
+
+        &.listView {
             border: 1px solid black;
+            height: 75vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
 
-            position: relative;
+            #notesList {
+                width: 30%;
+                height: 100%;
+                overflow: scroll;
+                border-right: 1px solid black;
 
-            h2 {
-                font-size: 2rem;
-                font-weight: bold;
-                margin-bottom: 0.5rem;
+                .note {
+                    height: 3rem;
+                    overflow: hidden;
+                    padding: 0.5rem;
+                    border-bottom: 1px solid black;
+                    cursor: pointer;
+
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+                }
             }
 
-            p {
-                font-size: 1.3rem;
-                margin-bottom: 1.5rem;
+            #fullNote {
+                width: 70%;
+                padding: 1rem;
+                position: relative;
 
-                &.date {
-                    font-size: 1rem;
-                    margin-bottom: 0;
-                    color: variables.$date-color;
+                h2 {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
 
+                p {
+                    font-size: 1.5rem;
+                }
+
+                .date {
                     position: absolute;
-                    bottom: 3px;
+                    right: 10px;
+                    top: 10px;
+                    font-style: italic;
                 }
             }
         }

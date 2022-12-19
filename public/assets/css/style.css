@@ -67,7 +67,7 @@ header em {
 main {
   padding: 2rem;
 }
-main #cards {
+main #cards.cardView {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -77,7 +77,7 @@ main #cards {
   width: 95%;
   margin: auto;
 }
-main #cards div.card {
+main #cards.cardView div.card {
   width: 20%;
   padding: 0.5rem;
   background-color: white;
@@ -85,21 +85,63 @@ main #cards div.card {
   border: 1px solid black;
   position: relative;
 }
-main #cards div.card h2 {
+main #cards.cardView div.card h2 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
-main #cards div.card p {
+main #cards.cardView div.card p {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
 }
-main #cards div.card p.date {
+main #cards.cardView div.card p.date {
   font-size: 1rem;
   margin-bottom: 0;
   color: gray;
   position: absolute;
   bottom: 3px;
+}
+main #cards.listView {
+  border: 1px solid black;
+  height: 75vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+main #cards.listView #notesList {
+  width: 30%;
+  height: 100%;
+  overflow: scroll;
+  border-right: 1px solid black;
+}
+main #cards.listView #notesList .note {
+  height: 3rem;
+  overflow: hidden;
+  padding: 0.5rem;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+main #cards.listView #notesList .note h2 {
+  font-size: 1.5rem;
+}
+main #cards.listView #fullNote {
+  width: 70%;
+  padding: 1rem;
+  position: relative;
+}
+main #cards.listView #fullNote h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+main #cards.listView #fullNote p {
+  font-size: 1.5rem;
+}
+main #cards.listView #fullNote .date {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-style: italic;
 }
 
 dialog form {
@@ -142,6 +184,7 @@ dialog form #choices input:hover, dialog form #choices em:hover {
   justify-content: space-between;
   align-content: flex-start;
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 #options #ordering {
   display: flex;
@@ -157,6 +200,19 @@ dialog form #choices input:hover, dialog form #choices em:hover {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+#options #viewSetting {
+  display: flex;
+  flex-direction: row;
+}
+#options #viewSetting p {
+  margin: 0 1rem;
+}
+#options #viewSetting em {
+  cursor: pointer;
+}
+#options #viewSetting em:not(.selected) {
+  color: gray;
 }
 
 body {

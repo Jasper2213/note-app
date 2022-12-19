@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-content: flex-start;
     font-size: 2rem;
+    margin-bottom: 1rem;
 
     #ordering {
         display: flex;
@@ -22,6 +23,23 @@
             width: 30px;
             height: 30px;
             cursor: pointer;
+        }
+    }
+
+    #viewSetting {
+        display: flex;
+        flex-direction: row;
+
+        p {
+            margin: 0 1rem;
+        }
+
+        em {
+            cursor: pointer;
+
+            &:not(.selected) {
+                color: gray;
+            }
         }
     }
 }
