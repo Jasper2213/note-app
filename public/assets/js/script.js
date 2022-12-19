@@ -1,13 +1,5 @@
 "use strict";
 
-/* TODO's:
-      [] Add event listeners to new forms
-      [] Add sorting possibilities to notes when retrieving them (Add new endpoint for this?)
-      [] Add possibility to favourite a note
-      [] Add more mock-data
-      [] Add possibility to edit a note
-*/
-
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
