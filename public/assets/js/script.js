@@ -3,7 +3,6 @@
 /* TODO's:
       [] Add event listeners to new forms
       [] Add sorting possibilities to notes when retrieving them (Add new endpoint for this?)
-      [] Add layout for list view
       [] Add possibility to favourite a note
       [] Add more mock-data
 */
@@ -13,13 +12,12 @@ const BASEURL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-    // TODO: Fix search bar being a bitch
     document.querySelector("#input_search").addEventListener("focus", () => {
-        document.querySelector("label").classList.add("active");
+        document.querySelector("label.search").classList.add("active");
     });
 
     document.querySelector("#input_search").addEventListener("blur", () => {
-        document.querySelector("label").classList.remove("active");
+        document.querySelector("label.search").classList.remove("active");
     });
 
     document.querySelector("#new").addEventListener("click", createNewNote);

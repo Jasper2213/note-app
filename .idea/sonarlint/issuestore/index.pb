@@ -1,6 +1,4 @@
 
-Z
-*public/assets/scss/header/search-form.scss,7\f\7fb9cf83464e2d7f8e26fc83987c400e2f8df067
 Q
 !public/assets/scss/variables.scss,0\b\0be6745aff2a3ea4e8292fbd9ab338b0a466f7cd
 K
