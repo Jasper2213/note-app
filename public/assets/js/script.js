@@ -10,15 +10,16 @@
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-    document.querySelector("#input_search").addEventListener("focus", () => {
+    const $inputSearch = document.querySelector("#input_search");
+    $inputSearch.addEventListener("focus", () => {
         document.querySelector("label.search").classList.add("active");
         document.querySelector("label.search input").setAttribute("placeholder", "Search title...");
     });
-    document.querySelector("#input_search").addEventListener("blur", () => {
+    $inputSearch.addEventListener("blur", () => {
         document.querySelector("label.search").classList.remove("active");
         document.querySelector("label.search input").removeAttribute("placeholder");
     });
-    document.querySelector("header form").addEventListener("submit", searchNote);
+    $inputSearch.addEventListener("keydown", searchNote);
 
     document.querySelector("#new").addEventListener("click", createNewNote);
     document.querySelector("#new-note form").addEventListener("submit", addNote);
@@ -46,16 +47,12 @@ async function switchToCardView() {
 }
 
 async function searchNote(e) {
-    e.preventDefault();
-
     const $searchbar = document.querySelector("#input_search");
     const query = $searchbar.value;
 
     await get(`/notes/${query}`)
         .then(res => res.json())
         .then(data => showNotes(data));
-
-    $searchbar.value = "";
 }
 
 async function showNotes(notes) {
