@@ -31,3 +31,18 @@ async function addNotesInCardView(notes) {
 
     addEventListenersToFavouriteAndEditIcons();
 }
+
+async function addIconsToCard(note, card) {
+    if (await noteIsFavourite(note.id)) {
+        card += `<div id="icons">
+                    <em id="favourite" class="fa-solid fa-star"></em>
+                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
+                 </div></div>`;
+    } else {
+        card += `<div id="icons">
+                    <em id="favourite" class="fa-regular fa-star"></em>
+                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
+                 </div></div>`;
+    }
+    return card;
+}
