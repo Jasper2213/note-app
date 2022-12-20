@@ -2,7 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", init);
 
+let notificationPermission;
+
 async function init() {
+    notificationPermission = await Notification.requestPermission();
+
     const $inputSearch = document.querySelector("#input_search");
     $inputSearch.addEventListener("focus", () => {
         document.querySelector("label.search").classList.add("active");
@@ -203,17 +207,24 @@ async function addNoteToFavourites(e) {
     const id = note.dataset.id;
 
     let notes;
+    let notif;
 
     if (e.target.classList.contains("fa-solid")) {
         notes = await remove(`/notes/favourites/${id}`)
                         .then(res => res.json())
                         .then(data => { return data; });
+
+        notif = new Notification("Note removed from favourites!");
     }
     else {
         notes = await post(`/notes/favourites/${id}`)
                         .then(res => res.json())
                         .then(data => { return data; });
+
+        notif = new Notification("Note added to favourites!");
     }
+
+    setTimeout(() => notif.close(), 1500);
 
     await showNotes(notes);
 }
