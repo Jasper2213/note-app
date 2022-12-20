@@ -143,17 +143,24 @@ function addEventListenersToNotes() {
     });
 }
 
-function showNote(e) {
+async function showNote(e) {
     const $fullNoteDiv = document.querySelector("#fullNote");
+    const $noteDiv = e.target.closest(".note");
+    const id = $noteDiv.dataset.id;
 
-    const note = e.target.closest(".note");
-    const title = note.children[0].innerText;
-    const content = note.children[1].innerText;
-    const date = note.children[2].innerText;
+    const note = await get(`/note/${id}`)
+                    .then(res => res.json())
+                    .then(data => { return data[0]; });
 
-    $fullNoteDiv.innerHTML = `<h2>${title}</h2>
-                              <p>${content}</p>
-                              <p class="date">${date}</p>`;
+    $fullNoteDiv.dataset.id = note.id;
+    $fullNoteDiv.innerHTML = `<h2>${note.title}
+                                    <em id="favourite" class="fa-regular fa-star"></em>
+                                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
+                              </h2>
+                              <p>${note.content}</p>
+                              <p class="date">${note.date.split("T")[0]}</p>`;
+
+    addEventListenersToFavouriteAndEditIcons();
 }
 
 async function addNotesInCardView(notes) {
@@ -170,10 +177,10 @@ async function addNotesInCardView(notes) {
         $notesDiv.insertAdjacentHTML("beforeend", card);
     }
 
-    addEventListenersToIconsInCards();
+    addEventListenersToFavouriteAndEditIcons();
 }
 
-function addEventListenersToIconsInCards() {
+function addEventListenersToFavouriteAndEditIcons() {
     const $favourites = document.querySelectorAll("#favourite");
     $favourites.forEach($favourite => {
         $favourite.addEventListener("click", addNoteToFavourites);
@@ -203,7 +210,14 @@ async function noteIsFavourite(id) {
 }
 
 async function addNoteToFavourites(e) {
-    const note = e.target.closest("div.card");
+    let note;
+    if (document.querySelector("#cards").classList.contains("cardView")) {
+        note = e.target.closest("div.card");
+    }
+    else {
+        note = document.querySelector("#fullNote");
+    }
+
     const id = note.dataset.id;
 
     let notes;

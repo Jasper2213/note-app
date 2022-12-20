@@ -33,6 +33,11 @@ app.post('/note', (req, res, next) => {
     res.send(Note.create(req.body));
 });
 
+app.get('/note/:id', (req, res, next) => {
+    const id = parseInt(req.params.id);
+    res.json(Note.getNote(id));
+});
+
 app.get('/favourites', (req, res, next) => {
    res.json(Note.getAllFavourites());
 });

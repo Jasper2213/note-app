@@ -26,6 +26,10 @@ function create(data) {
     return notes;
 }
 
+function getNote(id) {
+    return notes.filter(note => note.id === id);
+}
+
 function getNoteByTitle(title) {
     return notes.filter(note => note.title.toLowerCase().includes(title.toLowerCase()));
 }
@@ -46,4 +50,4 @@ function removeFromFavourites(id) {
     }
 }
 
-export { getAllNotes, create, getNoteByTitle, getAllFavourites, addToFavourites, removeFromFavourites };
+export { getAllNotes, create, getNote, getNoteByTitle, getAllFavourites, addToFavourites, removeFromFavourites };
