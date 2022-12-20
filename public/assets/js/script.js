@@ -134,10 +134,10 @@ async function addNotesInListView(notes) {
         $notesListDiv.insertAdjacentHTML("beforeend", html);
     });
 
-    addEventListenersToNotes();
+    addEventListenersToNotesInListView();
 }
 
-function addEventListenersToNotes() {
+function addEventListenersToNotesInListView() {
     document.querySelectorAll("#notesList .note").forEach(note => {
         note.addEventListener("click", showNote);
     });
@@ -153,14 +153,24 @@ async function showNote(e) {
                     .then(data => { return data[0]; });
 
     $fullNoteDiv.dataset.id = note.id;
-    $fullNoteDiv.innerHTML = `<h2>${note.title}
-                                    <em id="favourite" class="fa-regular fa-star"></em>
-                                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
-                              </h2>
-                              <p>${note.content}</p>
-                              <p class="date">${note.date.split("T")[0]}</p>`;
+    let fullNote = `<h2>${note.title}`;
+    fullNote += await addIconsToFullNoteInListView(note);
+    fullNote += `</h2>
+                  <p>${note.content}</p>
+                  <p class="date">${note.date.split("T")[0]}</p>`;
+    $fullNoteDiv.innerHTML = fullNote;
 
     addEventListenersToFavouriteAndEditIcons();
+}
+
+async function addIconsToFullNoteInListView(note) {
+    if (await noteIsFavourite(note.id)) {
+        return `<em id="favourite" class="fa-solid fa-star"></em>
+                <em id="edit" class="fa-solid fa-pen-to-square"></em>`;
+    } else {
+        return `<em id="favourite" class="fa-regular fa-star"></em>
+                <em id="edit" class="fa-solid fa-pen-to-square"></em>`;
+    }
 }
 
 async function addNotesInCardView(notes) {

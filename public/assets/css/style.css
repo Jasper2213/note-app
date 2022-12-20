@@ -154,6 +154,12 @@ main #cards.listView #fullNote h2 {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+main #cards.listView #fullNote h2 em {
+  cursor: pointer;
+}
+main #cards.listView #fullNote h2 em:first-of-type {
+  margin-left: 0.5rem;
+}
 main #cards.listView #fullNote p {
   font-size: 1.5rem;
 }
