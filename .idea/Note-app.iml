@@ -11,4 +11,8 @@
     <orderEntry type="library" name="238f3c8a83" level="application" />
     <orderEntry type="library" name="238f3c8a83" level="application" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="idePathPrefix" value="public" />
+    <option name="sqPathPrefix" value="src" />
+  </component>
 </module>

@@ -1,6 +1,6 @@
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores excepturi iusto minima nisi nulla quas veniam. Cumque ex, hic incidunt ipsa, mollitia nobis nostrum, officiis rerum sed similique sit tenetur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda, culpa ea eligendi eos fugiat hic iste iure maxime minima modi molestiae nisi omnis perspiciatis porro quae quasi tempora voluptatibus.";
 
-let notes = [
+const notes = [
     {
         id: 1,
         title: "New note",
@@ -15,6 +15,6 @@ let notes = [
     }
 ];
 
-let favourites = [1];
+const favourites = [1];
 
 export { notes, favourites };

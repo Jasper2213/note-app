@@ -55,5 +55,5 @@ function logError(error) {
 }
 
 function call(request) {
-    return fetch(request)
+    return fetch(request);
 }

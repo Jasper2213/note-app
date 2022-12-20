@@ -1,11 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import basicAuth from 'express-basic-auth';
 
 import { Note } from './logic/data/mock/mock-repository.js';
 import {CustomError} from "./logic/exceptions/errorhandling.js";
-
-const users = { admin: 1234 };
 
 const PORT = 3000;
 const SERVER_ERROR_STATUS_CODE = 500;
@@ -41,8 +38,9 @@ app.get('/notes/favourites', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-    if (err instanceof CustomError)
+    if (err instanceof CustomError) {
         res.status(err.statusCode).send(err.message);
+    }
     else {
         console.error(err);
         res.status(SERVER_ERROR_STATUS_CODE).send(SERVER_ERROR_MESSAGE);

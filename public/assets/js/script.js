@@ -59,10 +59,12 @@ async function searchNote(e) {
 }
 
 async function showNotes(notes) {
-    if (document.querySelector("#listView").classList.contains("selected"))
+    if (document.querySelector("#listView").classList.contains("selected")) {
         await showNotesInListView(notes);
-
-    else await showNotesInCardView(notes);
+    }
+    else {
+        await showNotesInCardView(notes);
+    }
 }
 
 async function showNotesInListView(notes) {
