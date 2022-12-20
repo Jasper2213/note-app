@@ -5,10 +5,6 @@ function getAllNotes() {
     return notes;
 }
 
-function getAllFavourites() {
-    return favourites;
-}
-
 function create(data) {
     if (data === undefined) {
         throw new BodyParsingError("Body cannot be empty");
@@ -34,4 +30,20 @@ function getNoteByTitle(title) {
     return notes.filter(note => note.title.toLowerCase().includes(title.toLowerCase()));
 }
 
-export { getAllNotes, getAllFavourites, create, getNoteByTitle };
+function getAllFavourites() {
+    return favourites;
+}
+
+function addToFavourites(id) {
+    if (!favourites.includes(id)) {
+        favourites.push(id);
+    }
+}
+
+function removeFromFavourites(id) {
+    if (favourites.includes(id)) {
+        favourites.splice(favourites.indexOf(id), 1);
+    }
+}
+
+export { getAllNotes, create, getNoteByTitle, getAllFavourites, addToFavourites, removeFromFavourites };

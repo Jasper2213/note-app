@@ -1,12 +1,5 @@
 "use strict";
 
-// TODO:
-//  Change order
-//  add favourites and filter on favourites (add boolean favourite to json object, and set/filter on that?)
-//  edit notes
-//  implement database system with docker
-//  write readme file with instructions to run locally
-
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
@@ -65,8 +58,6 @@ async function showNotes(notes) {
 }
 
 async function showNotesInListView(notes) {
-
-
     const $notesDiv = document.querySelector("#cards");
 
     $notesDiv.classList.remove("cardView");
@@ -77,8 +68,6 @@ async function showNotesInListView(notes) {
 }
 
 async function showNotesInCardView(notes) {
-
-
     const $notesDiv = document.querySelector("#cards");
 
     $notesDiv.classList.add("cardView");
@@ -132,7 +121,7 @@ async function addNotesInListView(notes) {
     const $notesListDiv = document.querySelector("#notesList");
 
     notes.forEach(note => {
-        const html = `<div class="note">
+        const html = `<div class="note" data-id="${note.id}">
                          <h2>${note.title}</h2>
                          <p>${note.content}</p>
                          <p class="date">${note.date.toString().split("T")[0]}</p>
@@ -166,13 +155,65 @@ function showNote(e) {
 async function addNotesInCardView(notes) {
     const $notesDiv = document.querySelector("#cards");
 
-    notes.forEach(note => {
-        const card = `<div class="card">
+    for (const note of notes) {
+        let card = `<div class="card" data-id="${note.id}">
                           <h2>${note.title}</h2>
                           <p>${note.content}</p>
-                          <p class="date">${note.date.split("T")[0]}</p>
-                      </div>`;
+                          <p class="date">${note.date.split("T")[0]}</p>`;
+
+        card = await addIconsToCard(note, card);
 
         $notesDiv.insertAdjacentHTML("beforeend", card);
+    }
+
+    addEventListenersToIconsInCards();
+}
+
+function addEventListenersToIconsInCards() {
+    const $favourites = document.querySelectorAll("#favourite");
+    $favourites.forEach($favourite => {
+        $favourite.addEventListener("click", addNoteToFavourites);
     });
+}
+
+async function addIconsToCard(note, card) {
+    if (await noteIsFavourite(note.id)) {
+        card += `<div id="icons">
+                    <em id="favourite" class="fa-solid fa-star"></em>
+                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
+                 </div></div>`;
+    } else {
+        card += `<div id="icons">
+                    <em id="favourite" class="fa-regular fa-star"></em>
+                    <em id="edit" class="fa-solid fa-pen-to-square"></em>
+                 </div></div>`;
+    }
+    return card;
+}
+
+async function noteIsFavourite(id) {
+    const favourites = await get('/favourites')
+        .then(res => res.json());
+
+    return favourites.includes(id);
+}
+
+async function addNoteToFavourites(e) {
+    const note = e.target.closest("div.card");
+    const id = note.dataset.id;
+
+    let notes;
+
+    if (e.target.classList.contains("fa-solid")) {
+        notes = await remove(`/notes/favourites/${id}`)
+                        .then(res => res.json())
+                        .then(data => { return data; });
+    }
+    else {
+        notes = await post(`/notes/favourites/${id}`)
+                        .then(res => res.json())
+                        .then(data => { return data; });
+    }
+
+    await showNotes(notes);
 }

@@ -83,6 +83,7 @@ main #cards.cardView div.card {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 1px solid black;
+  height: 30vh;
   position: relative;
 }
 main #cards.cardView div.card h2 {
@@ -94,12 +95,28 @@ main #cards.cardView div.card p {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
 }
+main #cards.cardView div.card p:not(.date) {
+  height: 77%;
+  overflow: scroll;
+}
 main #cards.cardView div.card p.date {
   font-size: 1rem;
   margin-bottom: 0;
   color: gray;
   position: absolute;
   bottom: 3px;
+}
+main #cards.cardView div.card #icons {
+  position: absolute;
+  bottom: 3px;
+  right: 5px;
+  font-size: 1.2rem;
+}
+main #cards.cardView div.card #icons em:hover {
+  cursor: pointer;
+}
+main #cards.cardView div.card #icons #edit {
+  margin-left: 0.3rem;
 }
 main #cards.listView {
   border: 1px solid black;

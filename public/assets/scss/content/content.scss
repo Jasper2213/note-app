@@ -20,7 +20,7 @@ main {
                 background-color: variables.$card-color;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 border: 1px solid black;
-
+                height: 30vh;
                 position: relative;
 
                 h2 {
@@ -33,13 +33,32 @@ main {
                     font-size: 1.3rem;
                     margin-bottom: 1.5rem;
 
+                    &:not(.date) {
+                        height: 77%;
+                        overflow: scroll;
+                    }
+
                     &.date {
                         font-size: 1rem;
                         margin-bottom: 0;
                         color: variables.$date-color;
-
                         position: absolute;
                         bottom: 3px;
+                    }
+                }
+
+                #icons {
+                    position: absolute;
+                    bottom: 3px;
+                    right: 5px;
+                    font-size: 1.2rem;
+
+                    em:hover {
+                        cursor: pointer;
+                    }
+
+                    #edit {
+                        margin-left: 0.3rem;
                     }
                 }
             }

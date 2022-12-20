@@ -33,8 +33,22 @@ app.post('/note', (req, res, next) => {
     res.send(Note.create(req.body));
 });
 
-app.get('/notes/favourites', (req, res, next) => {
-    res.json(Note.getAllFavourites());
+app.get('/favourites', (req, res, next) => {
+   res.json(Note.getAllFavourites());
+});
+
+app.post('/notes/favourites/:id', (req, res, next) => {
+   const id = parseInt(req.params.id);
+   Note.addToFavourites(id);
+
+    res.json(Note.getAllNotes());
+});
+
+app.delete('/notes/favourites/:id', (req, res, next) => {
+   const id = parseInt(req.params.id);
+   Note.removeFromFavourites(id);
+
+   res.json(Note.getAllNotes());
 });
 
 app.use((err, req, res, next) => {
