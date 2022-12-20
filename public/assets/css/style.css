@@ -138,6 +138,9 @@ main #cards.listView #notesList .note {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
+main #cards.listView #notesList .note:nth-child(odd) {
+  background-color: #ffe1b4;
+}
 main #cards.listView #notesList .note h2 {
   font-size: 1.5rem;
 }
