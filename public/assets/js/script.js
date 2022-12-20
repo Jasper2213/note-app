@@ -21,10 +21,11 @@ async function init() {
     document.querySelector("#listView").addEventListener("click", switchToListView);
     document.querySelector("#cardView").addEventListener("click", switchToCardView);
 
+    document.querySelector("#showFavourites").addEventListener("change", showOnlyFavourites);
+
     const notes = await get('/notes').then(res => res.json());
     await showNotes(notes);
 }
-
 
 function createNewNote() {
     const $dialog = document.querySelector("dialog#new-note");
@@ -69,4 +70,31 @@ async function searchNote() {
     await get(`/notes/${query}`)
         .then(res => res.json())
         .then(data => showNotes(data));
+}
+
+async function showOnlyFavourites(e) {
+    e.preventDefault();
+
+    const checked = e.target.checked;
+
+    let notes = [];
+    if (checked) {
+        const noteIds = await get(`/favourites`)
+            .then(res => res.json());
+
+        for await (const id of noteIds) {
+           const note = await get(`/note/${id}`)
+                                .then(res => res.json())
+                                .then(data => { return data[0]; });
+
+           notes.push(note);
+        }
+    }
+    else {
+        notes = await get('/notes')
+                        .then(res => res.json())
+                        .then(data => { return data; });
+    }
+
+    await showNotes(notes);
 }
