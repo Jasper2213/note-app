@@ -20,40 +20,53 @@ app.listen(PORT, () => {
 });
 
 app.get('/notes', (req, res, next) => {
-    res.json(Note.getAllNotes());
+    Note.getAllNotes()
+        .then(results => res.json(results))
+        .catch(err => next(err));
 });
 
 app.get('/notes/:query', (req, res, next) => {
     const query = req.params.query;
 
-    res.json(Note.getNoteByTitle(query));
+    Note.getNoteByTitle(query)
+        .then(results => res.json(results))
+        .catch(err => next(err));
 });
 
 app.post('/note', (req, res, next) => {
-    res.send(Note.create(req.body));
+    Note.create(req.body)
+        .then(results => res.json(results))
+        .catch(err => next(err));
 });
 
 app.get('/note/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
-    res.json(Note.getNote(id));
+
+    Note.getNote(id)
+        .then(results => res.json(results))
+        .catch(err => next(err));
 });
 
 app.get('/favourites', (req, res, next) => {
-   res.json(Note.getAllFavourites());
+   Note.getAllFavourites()
+       .then(results => res.json(results))
+       .catch(err => next(err));
 });
 
 app.post('/notes/favourites/:id', (req, res, next) => {
    const id = parseInt(req.params.id);
-   Note.addToFavourites(id);
+   Note.addToFavourites(id)
+       .catch(err => next(err));
 
-    res.json(Note.getAllNotes());
+    res.json(Note.getAllFavourites());
 });
 
 app.delete('/notes/favourites/:id', (req, res, next) => {
    const id = parseInt(req.params.id);
-   Note.removeFromFavourites(id);
+   Note.removeFromFavourites(id)
+       .catch(err => next(err));
 
-   res.json(Note.getAllNotes());
+   res.json(Note.getAllFavourites());
 });
 
 app.use((err, req, res, next) => {

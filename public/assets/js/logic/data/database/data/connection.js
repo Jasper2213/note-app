@@ -1,15 +1,12 @@
 import mysql from "promise-mysql";
-import * as dotenv from 'dotenv';
-
-dotenv.config();
 
 function openConnection() {
     return mysql.createConnection({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_DATABASE,
-        port: process.env.DB_PORT
+        host: 'localhost',
+        user: 'user',
+        password: '1234',
+        database: 'notedb',
+        port: '3307'
     });
 }
 

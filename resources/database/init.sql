@@ -9,8 +9,12 @@ CREATE TABLE note (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     content VARCHAR(8000),
-    creation_date DATE
+    date DATE
 );
+
+INSERT INTO note (title, content, date)
+VALUES ('test', 'test', NOW()),
+       ('test2', 'test2', NOW());
 
 CREATE TABLE favourite (
     id int,
