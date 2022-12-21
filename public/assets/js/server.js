@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import { Note } from './logic/data/mock/mock-repository.js';
+import { Note } from './logic/data/database/database-repository.js';
 import {CustomError} from "./logic/exceptions/errorhandling.js";
 
 const PORT = 3000;
