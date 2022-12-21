@@ -23,6 +23,8 @@ async function init() {
 
     document.querySelector("#showFavourites").addEventListener("change", showOnlyFavourites);
 
+    document.querySelector("#orderBy").addEventListener("change", changeOrder);
+
     const notes = await get('/notes').then(res => res.json());
     await showNotes(notes);
 }
