@@ -39,7 +39,15 @@ async function getNoteByTitle(title) {
 }
 
 async function getAllFavourites() {
-    return await executeWithResult(GET_FAVOURITES);
+    let result = [];
+
+    const favourites = await executeWithResult(GET_FAVOURITES);
+
+    favourites.forEach(favourite => {
+        result.push(favourite.id);
+    });
+
+    return result;
 }
 
 async function addToFavourites(id) {
