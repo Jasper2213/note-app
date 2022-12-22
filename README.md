@@ -1,15 +1,15 @@
 # Note app
 
 ## Table of contents
-* [1. Description](https://github.com/Jasper2213/note-app/new/master#1-description)
-* [2. How to run the application](https://github.com/Jasper2213/note-app/new/master#2-how-to-run-the-application)
-  * [1. Necessities](https://github.com/Jasper2213/note-app/new/master#1-necessities)
-  * [2. Optional software](https://github.com/Jasper2213/note-app/new/master#2-optional-software)
-  * [3. Compiling the .scss files](https://github.com/Jasper2213/note-app/new/master#3-compiling-the-scss-files)
-  * [4. Installing the necessary packages](https://github.com/Jasper2213/note-app/new/master#4-installing-the-necessary-packages)
-  * [5. Setting up the database](https://github.com/Jasper2213/note-app/new/master#5-setting-up-the-database)
-    * [1. Checking if everything is set up correctly](https://github.com/Jasper2213/note-app/new/master#1-checking-if-everything-is-set-up-correctly) 
-* [3. Future implementations](https://github.com/Jasper2213/note-app/new/master#3-future-implementations)
+* [1. Description](#description)
+* [2. How to run the application](#how-to-run-the-application)
+  * [1. Necessities](#nesessities)
+  * [2. Optional software](#optional-software)
+  * [3. Compiling the .scss files](#compiling-the-.scss-files)
+  * [4. Installing the necessary packages](#installing-the-necessary-packages)
+  * [5. Setting up the database](#setting-up-the-database)
+    * [1. Checking if everything is set up correctly](#checking-if-everything-is-set-up-correctly) 
+* [3. Future implementations](#future-implementations)
 
 ## 1. Description
 This is a simple application, where you can store and create notes. It's also possible to add notes to favourites, and view only these favourited notes.
@@ -94,5 +94,6 @@ and check wheter the database is available and complete (use `use notedb` to use
 ## 3. Future implementations
 In the future, I'll
 * Make it possible to remove a note
+* Make it possible to edit a note
 * Fix the problem with applying multiple filters (only favourites sorted by newest for example)
 * Maybe try to add an implementation with a dedicated server
