@@ -1,23 +1,23 @@
 # Note app
 
 ## Table of contents
-* [1. Description](#1.-description)
-* [2. How to run the application](#2.-how-to-run-the-application)
-  * [1. Necessities](#1.-nesessities)
-  * [2. Optional software](#2.-optional-software)
-  * [3. Compiling the .scss files](#3.-compiling-the-.scss-files)
-  * [4. Installing the necessary packages](#4.-installing-the-necessary-packages)
-  * [5. Setting up the database](#5.-setting-up-the-database)
-    * [1. Checking if everything is set up correctly](#1.-checking-if-everything-is-set-up-correctly) 
-* [3. Future implementations](#3.-future-implementations)
+* [1. Description](#description)
+* [2. How to run the application](#how-to-run-the-application)
+  * [1. Necessities](#necessities)
+  * [2. Optional software](#optional-software)
+  * [3. Compiling the scss files](#compiling-the-scss-files)
+  * [4. Installing the necessary packages](#installing-the-necessary-packages)
+  * [5. Setting up the database](#setting-up-the-database)
+    * [1. Checking if everything is set up correctly](#checking-if-everything-is-set-up-correctly) 
+* [3. Future implementations](#future-implementations)
 
-## 1. Description
+## Description
 This is a simple application, where you can store and create notes. It's also possible to add notes to favourites, and view only these favourited notes.
 For a better user experience, I also added the option to switch between 2 views: card view (***default***) and list view. 
 I also added the option to order the notes by newest, oldest, title ascending (A-Z) and title descending (Z-A).
 
-## 2. How to run the application
-### 1. Necessities
+## How to run the application
+### Necessities
 To run this application, you'll need the following software (all are free):
 * `node.js`
 * `npm` (Node Packet Manager)
@@ -27,10 +27,10 @@ To run this application, you'll need the following software (all are free):
 * Docker
   * Can be installer from [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/).
 
-### 2. Optional software
+### Optional software
 If you want to test endpoints locally without having to use the browser, you can install Postman from [https://www.postman.com/](https://www.postman.com/).
 
-### 3. Compiling the .scss files
+### Compiling the scss files
 To apply changes you make in the `.scss` files, you have to compile them to regular a regular `.css` file. <br>
 This can be done by using
 ```bash
@@ -42,13 +42,13 @@ $ sass --watch sass/main.scss css/style.css
 ```
 Both of these commands have to be executed in the public/assets directory.
 
-### 4. Installing the necessary packages
+### Installing the necessary packages
 Run the following command to install the necessary packages.
 ```bash
 $ npm install
 ```
 
-### 5. Setting up the database
+### Setting up the database
 Everything needed to create the database can be found in the `resources/database` directory.
 
 In this directory, execute the following commands to set up the Docker container (this only has to be done once).
@@ -79,7 +79,7 @@ function openConnection() {
 }
 ```
 
-#### 1. Checking if everything is set up correctly
+#### Checking if everything is set up correctly
 To test if everything is working correctly, the following command can be used to enter the docker environment.
 ```bash
 $ docker exec -it some-notedb bash
@@ -91,7 +91,7 @@ $ mysql -u user -p1234
 ```
 and check wheter the database is available and complete (use `use notedb` to use the note database).
 
-## 3. Future implementations
+## Future implementations
 In the future, I'll
 * Make it possible to remove a note
 * Make it possible to edit a note
