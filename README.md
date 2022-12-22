@@ -2,7 +2,7 @@
 
 ## Table of contents
 * [1. Description](https://github.com/Jasper2213/note-app/new/master#1-description)
-* [1. How to run the application](https://github.com/Jasper2213/note-app/new/master#2-how-to-run-the-application)
+* [2. How to run the application](https://github.com/Jasper2213/note-app/new/master#2-how-to-run-the-application)
   * [1. Necessities](https://github.com/Jasper2213/note-app/new/master#1-necessities)
   * [2. Optional software](https://github.com/Jasper2213/note-app/new/master#2-optional-software)
   * [3. Compiling the .scss files](https://github.com/Jasper2213/note-app/new/master#3-compiling-the-scss-files)
